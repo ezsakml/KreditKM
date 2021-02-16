@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5fb76ee5-4a72-4272-98a9-bdbd41be3e81">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="kodebayar" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pelanggan.`nama` AS pelanggan_nama,
+     belikredit.`kodekredit` AS belikredit_kodekredit,
+     belikredit.`kodecust` AS belikredit_kodecust,
+     belikredit.`kodemotor` AS belikredit_kodemotor,
+     belikredit.`angsuran` AS belikredit_angsuran,
+     belikredit.`sisa` AS belikredit_sisa,
+     belikredit.`jatuhtempo` AS belikredit_jatuhtempo,
+     bayarcicilan.`nomorbayar` AS bayarcicilan_nomorbayar,
+     bayarcicilan.`tanggalbayar` AS bayarcicilan_tanggalbayar,
+     bayarcicilan.`kodekredit` AS bayarcicilan_kodekredit,
+     bayarcicilan.`bulan` AS bayarcicilan_bulan,
+     bayarcicilan.`jumlah` AS bayarcicilan_jumlah,
+     bayarcicilan.`denda` AS bayarcicilan_denda,
+     bayarcicilan.`keterangan` AS bayarcicilan_keterangan,
+     belikredit.`angsuranke` AS belikredit_angsuranke,
+     motor.`kodemotor` AS motor_kodemotor,
+     pelanggan.`kodecust` AS pelanggan_kodecust
+FROM
+     `pelanggan` pelanggan INNER JOIN `belikredit` belikredit ON pelanggan.`kodecust` = belikredit.`kodecust`
+     INNER JOIN `motor` motor ON belikredit.`kodemotor` = motor.`kodemotor`
+     INNER JOIN `bayarcicilan` bayarcicilan ON belikredit.`kodekredit` = bayarcicilan.`kodekredit`
+WHERE
+     bayarcicilan.nomorbayar = $P{kodebayar}]]>
+	</queryString>
+	<field name="pelanggan_nama" class="java.lang.String"/>
+	<field name="belikredit_kodekredit" class="java.lang.String"/>
+	<field name="belikredit_kodecust" class="java.lang.String"/>
+	<field name="belikredit_kodemotor" class="java.lang.String"/>
+	<field name="belikredit_angsuran" class="java.lang.Double"/>
+	<field name="belikredit_sisa" class="java.lang.Double"/>
+	<field name="belikredit_jatuhtempo" class="java.sql.Date"/>
+	<field name="bayarcicilan_nomorbayar" class="java.lang.String"/>
+	<field name="bayarcicilan_tanggalbayar" class="java.sql.Date"/>
+	<field name="bayarcicilan_kodekredit" class="java.lang.String"/>
+	<field name="bayarcicilan_bulan" class="java.lang.Integer"/>
+	<field name="bayarcicilan_jumlah" class="java.lang.Integer"/>
+	<field name="bayarcicilan_denda" class="java.lang.String"/>
+	<field name="bayarcicilan_keterangan" class="java.lang.String"/>
+	<field name="belikredit_angsuranke" class="java.lang.String"/>
+	<field name="motor_kodemotor" class="java.lang.String"/>
+	<field name="pelanggan_kodecust" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="75" height="79" uuid="f519a7cf-9c8c-4f35-8ae7-5c2a53df5eb3"/>
+				<imageExpression><![CDATA["C:\\Users\\T430\\Documents\\NetBeansProjects\\KreditKM\\src\\gambar\\k.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="211" y="0" width="248" height="36" forecolor="#FF0000" uuid="1248cff4-60a7-4362-bc7b-401483bba8a4"/>
+				<textElement>
+					<font fontName="Segoe UI" size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KHARISMA MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="56" width="248" height="20" uuid="7d8c7523-b61c-4897-a8a1-cc882c9187e8"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Bogor Km. 19 No. 17 Kramat Jati, Jakarta Timur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="36" width="454" height="20" uuid="cdd88e57-56ff-4dff-b0e2-48c99a0c11d3"/>
+				<text><![CDATA[Telp : (021) 809 2012 - 800 8381 Fax : (021) 800 8386 Email : kharisma_honda@jaringanhonda.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="79" width="555" height="1" uuid="d57ce127-b9a7-47f1-b1b6-93a67e951e52"/>
+			</line>
+			<line>
+				<reportElement x="0" y="80" width="555" height="1" uuid="4892a9a9-251e-40a6-816b-adabdbae92fd"/>
+			</line>
+			<line>
+				<reportElement x="0" y="85" width="555" height="1" uuid="197b17b9-e652-4c43-a500-1da0cd6bd3d7"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="217" y="58" width="143" height="22" uuid="bc3ea0d4-2cc6-4890-b222-3d49927bdf94"/>
+				<textElement>
+					<font fontName="Segoe UI" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[NOTA PEMBELIAN]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="493" splitType="Stretch">
+			<staticText>
+				<reportElement x="337" y="52" width="100" height="20" uuid="01250d38-2efe-48a2-9faf-0117e945c58f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Tanggal :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="437" y="52" width="118" height="20" uuid="f6ba8484-5e53-4cdb-adc2-48722527281f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMMM yyyy", new java.util.Locale("id")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="36" y="146" width="100" height="20" uuid="6d881e63-ebaf-4404-83b3-588ae44b9e07"/>
+				<text><![CDATA[Kode Cicilan          :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="166" width="100" height="20" uuid="82c2111c-00de-47af-a155-a6c71f8965ed"/>
+				<text><![CDATA[Kode Pelanggan   :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="186" width="100" height="20" uuid="a24bca81-4506-44a2-8096-de60492c3221"/>
+				<text><![CDATA[Nama pelanggan  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="146" width="88" height="20" uuid="e67ffd54-12e0-408a-ba41-6469c456fae4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bayarcicilan_nomorbayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="166" width="88" height="20" uuid="e0ff3c29-fecd-44fc-9ede-51c9e845fd3a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{belikredit_kodecust}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="186" width="88" height="20" uuid="f4197f20-ed86-4858-842d-88dc35a6555b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pelanggan_nama}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="76" y="229" width="100" height="20" backcolor="#FF3333" uuid="a1d85f8c-b9f5-466d-9206-2e80c18ea332"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="176" y="229" width="100" height="20" backcolor="#FF3333" uuid="af6000bb-80b7-4e72-b477-1ece9121cfac"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="276" y="229" width="100" height="20" backcolor="#FF3333" uuid="79eef136-3dd4-4ce2-ba4d-33e78c5f4411"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="376" y="229" width="100" height="20" backcolor="#FF3333" uuid="77774f29-f4e8-4222-bd78-aa3d714f475a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="76" y="229" width="100" height="20" forecolor="#FFFFFF" uuid="ee2874b4-c1ca-4370-b733-a63f8c02adfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[KODE KREDIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="229" width="100" height="20" forecolor="#FFFFFF" uuid="b58a4c73-9226-4079-91f2-577eb2ed5dd5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TANGGAL BAYAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="229" width="100" height="20" forecolor="#FFFFFF" uuid="8ed29c4c-a542-4c5f-ac87-ce3999333c9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AKUMULASI BAYAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="229" width="100" height="20" forecolor="#FFFFFF" uuid="09d5483f-7ab3-42d6-b40f-55004bc24827"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANGSURAN]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="76" y="249" width="100" height="20" uuid="a8b3d600-4070-44a8-a959-ae099ae01dcf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="176" y="249" width="100" height="20" uuid="dfebe233-6a26-4d7f-81fe-1ba98e6e1172"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="276" y="249" width="100" height="20" uuid="a851dad6-f9a3-4f1a-a0d9-7a6d9abaf5ff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="376" y="249" width="100" height="20" uuid="5b4bf3ce-e52f-4daa-bb26-41f0013865da"/>
+			</rectangle>
+			<textField>
+				<reportElement x="76" y="249" width="100" height="20" uuid="2d589434-6771-4a08-8ccf-35034afb0f83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bayarcicilan_kodekredit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="176" y="249" width="100" height="20" uuid="47c41b9e-79e6-4750-bebb-3fdc811e77df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bayarcicilan_tanggalbayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="249" width="100" height="20" uuid="d832d0bc-51ec-4cdd-bdda-ace0037f1b95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bayarcicilan_bulan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="376" y="249" width="100" height="20" uuid="8ccbef80-1a19-4898-a0c3-6470a82c4926"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("Rp #,##0.00").format(Double.valueOf($F{belikredit_angsuran}))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="214" y="347" width="100" height="20" uuid="49d6a2c6-b658-4765-93c7-6e4ed970a1b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[KETERANGAN         :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="467" width="354" height="20" uuid="450f1f44-95af-4aba-9dcf-054b67fbedbb"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERIMA KASIH TELAH MENGGUNAKAN JASA KAMI]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="424" y="185" width="128" height="20" uuid="27b278b8-212f-4363-9441-abb705c6cc80"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMM yyyy", new java.util.Locale("id")).format($F{belikredit_jatuhtempo})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="324" y="185" width="87" height="20" uuid="06d30fa2-e58b-4bc5-87c1-b1d7dc7c1aa7"/>
+				<text><![CDATA[Jatuh Tempo :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="76" y="269" width="300" height="20" backcolor="#FF3333" uuid="682ae012-7638-4fd4-85dc-147233aca246"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="76" y="289" width="300" height="20" backcolor="#FF3333" uuid="1546d9c7-1d18-4d3e-bf3a-b768b7f5b5f8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="376" y="269" width="100" height="20" uuid="6e15a4f4-02a8-4794-ae23-0c7f62cf7bd7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="376" y="289" width="100" height="20" uuid="9419e7a1-51bc-45aa-851a-1933024f9a1b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="376" y="309" width="100" height="20" uuid="b50f8041-111d-4c94-bc76-3fbf1e4b6596"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="76" y="269" width="300" height="20" forecolor="#FFFFFF" uuid="d6361d94-b9ec-40f9-8314-e0ce3d76f5ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DENDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="289" width="300" height="20" forecolor="#FFFFFF" uuid="0ac1179e-a124-4fb1-9358-7f7cd259c86f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL PEMBAYARAN]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="376" y="269" width="100" height="20" uuid="910740ce-2f4c-4c98-9c8e-8a27e5409101"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("Rp #,##0.00").format(Double.valueOf($F{bayarcicilan_denda}))]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="376" y="289" width="100" height="20" uuid="d4ca96c9-fd9d-47cf-8ccb-ddf83540d391"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("Rp #,##0.00").format(Double.valueOf($F{bayarcicilan_jumlah}))]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="76" y="309" width="300" height="20" backcolor="#FF3333" uuid="312cd267-46fb-4c93-bc00-1b512d075864"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="76" y="309" width="300" height="20" forecolor="#FFFFFF" uuid="de4a4cc9-e7e3-47c4-8d6b-1753ef753362"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISA]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="376" y="309" width="100" height="20" uuid="e588cbad-a145-4d27-bcc0-d26d72a053c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("Rp #,##0.00").format(Double.valueOf($F{belikredit_sisa}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="349" width="143" height="20" uuid="9d33716d-feca-4f2e-82f7-a762ee6bb281"/>
+				<textFieldExpression><![CDATA[$F{bayarcicilan_keterangan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
+</jasperReport>
